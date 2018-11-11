@@ -5,5 +5,6 @@ const convertImageDir = require("./MVP/core")
 const _originalDirPath = path.join(__dirname, "MVP", "originalImages")
 const _outputDirPath = path.join(__dirname, "MVP", "output")
 
+// 进行批量转换
 convertImageDir(_originalDirPath, _outputDirPath)
 
