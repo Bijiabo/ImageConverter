@@ -5,7 +5,14 @@ const convertImageByColorAndPathConfig = require("./converter")
 const _originalDirPath = path.join(__dirname, "originalImages")
 const _outputDirPath = path.join(__dirname, "output")
 
-const convertImageDir = (originalDirPath, outputDirPath) => {
+/**
+* convertImageDir
+* 将源文件夹根据特定颜色转换输出到目标文件夹
+* originalDirPath: string
+* outputDirPath: string
+* RGBArrayValue: [Number] (example: [255,0,0])
+*/
+const convertImageDir = (originalDirPath, outputDirPath, RGBArrayValue) => {
 
   if (!fs.existsSync(originalDirPath)) {
     console.log(`[Error] originalDirPath is not exists: ${originalDirPath}`)
@@ -33,7 +40,7 @@ const convertImageDir = (originalDirPath, outputDirPath) => {
       if (!/\.png$/ig.test(item)) {
         console.log(`[Warning] file is not a PNG file, skip it: ${fileFullPath}`)
       } else {
-        convertImageByColorAndPathConfig(fileFullPath, fileOutputPath, [152, 214, 93])
+        convertImageByColorAndPathConfig(fileFullPath, fileOutputPath, RGBArrayValue)
       }
     } else {
       convertImageDir(
